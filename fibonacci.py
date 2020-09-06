@@ -1,18 +1,7 @@
-import time
 from typing import Generator
 from typing import Dict
 
-def timeis(func):
-    def wrap(*args, **kwargs):
-        start = time.time()
-        result = func(*args, **kwargs)
-        end = time.time()
-
-        print(func.__name__, end-start)
-        return result
-    return wrap
-
-@timeis
+# using generators. Use for loop in main to access all elements
 def fib(n: int) -> Generator[int, None, None]:
     yield 0 
     if n > 0: yield 1
@@ -22,7 +11,7 @@ def fib(n: int) -> Generator[int, None, None]:
         last, next = next, last + next
         yield next
 
-@timeis
+# using memoization
 def fib_memo(n: int) -> int:
     memo: Dict[int, int] = {0: 0, 1: 1}
     if n not in memo:
@@ -30,5 +19,4 @@ def fib_memo(n: int) -> int:
     return memo[n]
 
 if __name__ == "__main__":
-    # print(fib(50))
     print(fib_memo(50))
