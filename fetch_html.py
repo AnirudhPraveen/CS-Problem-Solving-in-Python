@@ -7,7 +7,7 @@ async def get_html(session, url):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        html = await get_html(session, 'http://packtpub.com')
+        html = await get_html(session, 'www.google.com')
         print(html)
 
 loop = asyncio.get_event_loop()
