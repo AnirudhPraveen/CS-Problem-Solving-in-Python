@@ -31,7 +31,13 @@ def hanoi(begin: Stack[int], end: Stack[int], temp: Stack[int], n: int) -> None:
         hanoi(temp, end, begin, n-1)
 
 if __name__ == "__main__":
+    print("Before...")
+    print(tower_a)
+    print(tower_b)
+    print(tower_c)
+
     hanoi(tower_a, tower_b, tower_c, num_discs)
+    print("After...")
     print(tower_a)
     print(tower_b)
     print(tower_c)

@@ -49,5 +49,13 @@ def dfs(initial: T, goal_test: Callable[[T], bool], successors: Callable[[T], Li
     while not frontier.empty:
         current_node: Node[T] = frontier.pop()
         current_state: T = current_node.state
-        # if we foound the goal, we're done
-        
+        # if we found the goal, we're done
+        if goal_test(current_state):
+            return current_node
+        # check where we can go next that we haven't gone yet
+        for child in successors(current_state):
+            if child in explored:  # skip children we already explored
+                continue
+            explored.add(child)
+            frontier.push(Node(child, current_node))
+    return None   # went through everything and never found goal

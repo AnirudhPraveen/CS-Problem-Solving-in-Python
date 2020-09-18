@@ -59,3 +59,6 @@ class Maze:
         if ml.column - 1 >= 0 and self._grid[ml.row][ml.column - 1] != Cell.BLOCKED:
             locations.append(MazeLocation(ml.row, ml.column - 1))
         return locations
+
+if __name__ == '__main__':
+    solution: Optional[Node[MazeLocation]] = bfs(m.start, m.goal_test, m.successors)
